@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useState } from "react";
 
 /* eslint-disable react/no-unescaped-entities */
 function Header() {
@@ -55,11 +56,12 @@ function Footer() {
 }
 
 function Content() {
-  let posts = [];
+  const [posts, setPosts] = useState([]);
 
   function handleIndexPosts() {
     axios.get("http://localhost:3000/posts.json").then((response) => {
       console.log(response.data);
+      setPosts(response.data);
     });
   }
 
