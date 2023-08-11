@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 /* eslint-disable react/no-unescaped-entities */
 function Header() {
@@ -57,6 +57,7 @@ function Footer() {
 
 function Content() {
   const [posts, setPosts] = useState([]);
+  useEffect(handleIndexPosts, []);
 
   function handleIndexPosts() {
     axios.get("http://localhost:3000/posts.json").then((response) => {
@@ -68,7 +69,6 @@ function Content() {
   return (
     <div>
       <PostsNew />
-      <button onClick={handleIndexPosts}>Load Posts...</button>
       <PostsIndex posts={posts} />
     </div>
   );
