@@ -9,7 +9,7 @@ if (jwt) {
 export function Login() {
   const [errors, setErrors] = useState([]);
 
-  function handleSubmit(event) {
+  const handleSubmit = (event) => {
     event.preventDefault();
     setErrors([]);
     const params = new FormData(event.target);
@@ -17,18 +17,20 @@ export function Login() {
       .post("http://localhost:3000/sessions.json", params)
       .then((response) => {
         console.log(response.data);
-        axios.defaults.headers.common["Authorization"].localStorage.setItem("jwt", response.data.jwt);
+        axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.jwt;
+        localStorage.setItem("jwt", response.data.jwt);
         event.target.reset();
-        window.location.href = "/";
+        window.location.href = "/"; // Change this to hide a modal, redirect to a specific page, etc.
       })
       .catch((error) => {
-        console.log("ERROR", error.response.data.errors);
+        console.log(error.response);
         setErrors(["Invalid email or password"]);
       });
-  }
+  };
+
   return (
     <div id="login">
-      <h1>Login:</h1>
+      <h1>Login</h1>
       <ul>
         {errors.map((error) => (
           <li key={error}>{error}</li>
@@ -36,16 +38,12 @@ export function Login() {
       </ul>
       <form onSubmit={handleSubmit}>
         <div>
-          Email:
-          <input className="form-control" name="email" type="email" />
+          Email: <input name="email" type="email" />
         </div>
         <div>
-          Password:
-          <input className="form-control" name="password" type="password" />
+          Password: <input name="password" type="password" />
         </div>
-        <button className="btn btn-secondary" type="submit">
-          Submit
-        </button>
+        <button type="submit">Login</button>
       </form>
     </div>
   );
