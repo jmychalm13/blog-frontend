@@ -5,6 +5,7 @@ import { PostsIndex } from "./PostsIndex";
 import { PostsShow } from "./PostsShow";
 import { Signup } from "./Signup";
 import { Login } from "./Login";
+import { LogoutLink } from "./LogoutLink";
 import { Modal } from "./Modal";
 
 export function Content() {
@@ -35,6 +36,7 @@ export function Content() {
       <Login />
       <PostsIndex posts={posts} onShowPost={handleShowPost} />
       <PostsNew />
+      <LogoutLink />
       <Modal show={isPostsShowVisible} onClose={handleClose}>
         <PostsShow post={currentPost} />
       </Modal>
