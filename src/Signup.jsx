@@ -1,8 +1,24 @@
+import axios from "axios";
+
+function handleSubmit(event) {
+  event.preventDefault();
+  const params = new FormData(event.target);
+  axios
+    .post("http://localhost:3000/users.json", params)
+    .then((response) => {
+      console.log(response.data);
+      event.target.reset();
+    })
+    .catch((error) => {
+      console.log("ERROR", error.response.data.errors);
+    });
+}
+
 export function Signup() {
   return (
     <div id="signup">
       <h1>Signup</h1>
-      <form action="http://localhost:3000/users.json" method="POST">
+      <form onSubmit={handleSubmit}>
         <div>
           Name:
           <input type="text" name="name" className="form-control" />
