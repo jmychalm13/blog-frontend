@@ -15,8 +15,8 @@ export function PostsNew() {
           Image:
           <input type="text" />
         </div>
-        <button className="btn">
-          <input type="submit" value="Submit" />
+        <button className="btn btn-secondary" type="submit">
+          Submit
         </button>
       </form>
     </div>
