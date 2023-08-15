@@ -28,9 +28,9 @@ export function Content() {
   }
 
   return (
-    <div>
-      <PostsNew />
+    <div className="container">
       <PostsIndex posts={posts} onShowPost={handleShowPost} />
+      <PostsNew />
       <Modal show={isPostsShowVisible} onClose={handleClose}>
         <PostsShow post={currentPost} />
       </Modal>
