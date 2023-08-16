@@ -30,12 +30,18 @@ export function Content() {
     });
   }
 
+  function handleCreatePost(params) {
+    axios.post("http://localhost:3000/posts.json", params).then((response) => {
+      setPosts([...posts, response.data]);
+    });
+  }
+
   return (
     <div className="container">
       <Signup />
       <Login />
       <PostsIndex posts={posts} onShowPost={handleShowPost} />
-      <PostsNew />
+      <PostsNew onCreatePost={handleCreatePost} />
       <LogoutLink />
       <Modal show={isPostsShowVisible} onClose={handleClose}>
         <PostsShow post={currentPost} />

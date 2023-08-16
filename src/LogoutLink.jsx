@@ -9,7 +9,7 @@ export function LogoutLink() {
   };
 
   return (
-    <button className="btn btn-secondary">
+    <button className="btn btn-secondary mt-3">
       <a href="#" onClick={handleClick}>
         Logout
       </a>
