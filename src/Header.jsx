@@ -26,17 +26,24 @@ export function Header() {
               </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="#posts-index">
+              <Link className="nav-link" to="/login">
+                Login
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/posts">
                 All Posts
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#posts-new">
+              <Link className="nav-link" to="/posts/new">
                 New Post
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link disabled">Disabled</a>
+              <Link className="nav-link" to="/signup">
+                Signup
+              </Link>
             </li>
           </ul>
         </div>
